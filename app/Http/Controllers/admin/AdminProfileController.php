@@ -3,21 +3,24 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdminHomeController extends Controller
+class AdminProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function index()
     {
         //
-        return view("admin.index");
+        $data=User::find(Auth::id());
+        return view("admin.profile",[
+            'data' => $data
+        ]);
     }
 
     /**
@@ -70,9 +73,15 @@ class AdminHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $data=User::find(Auth::id());
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = bcrypt($request->password);
+        $data->save();
+        return redirect()->back()->with('success', 'user updated');
     }
 
     /**

@@ -98,8 +98,8 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{asset('assets')}}/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-                        <span class="hidden-xs">Sezer</span>
-                <li><a href="/logoutuser"><i class="fa fa-lock"></i> Logout</a></li>
+                        <span class="hidden-xs">{{Auth::user()->name}}</span>
+                <li><a href="{{route('user.logoutuser')}}"><i class="fa fa-lock"></i> Logout</a></li>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->

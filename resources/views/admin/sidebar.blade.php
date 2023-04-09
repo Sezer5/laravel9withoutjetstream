@@ -8,7 +8,7 @@
                 <img src="{{asset('assets')}}/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>Sezer</p>
+                <p>{{Auth::user()->name}}</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -31,6 +31,31 @@
                     <i class="fa fa-home"></i>Home
                 </a>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>User</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{route('user.usercreate')}}">
+                            <i class="fa fa-user"></i>Add User
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('role.userroles')}}">
+                            <i class="fa fa-user"></i>User Roles
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('profile.index')}}">
+                            <i class="fa fa-user"></i>User Profile
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li>
                 <a href="">
                     <i class="fa fa-gear"></i>Settings
